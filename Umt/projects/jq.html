@@ -1,0 +1,252 @@
+<html><head><base href="https://rajeel.web.app/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Futuristic jQuery Playground</title><style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    
+    :root {
+      --primary-color: #00ffff;
+      --secondary-color: #ff00ff;
+      --background-color: #0a0a0a;
+      --text-color: #ffffff;
+      --accent-color: #ffcc00;
+      --panel-bg: rgba(0, 255, 255, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    }
+    
+    h1, h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+    
+    p {
+      margin-bottom: 15px;
+    }
+    
+    button, .btn {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: var(--background-color);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 5px;
+    }
+    
+    button:hover, .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+    }
+    
+    #panel {
+      padding: 20px;
+      display: none;
+      background-color: var(--panel-bg);
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    
+    #fadeDiv {
+      width: 100px;
+      height: 100px;
+      display: none;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      border-radius: 10px;
+      margin: 10px auto;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      font-family: 'Orbitron', sans-serif;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+    
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      box-shadow: 0 0 10px var(--primary-color);
+    }
+    
+    #displayArea {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      text-shadow: 0 0 10px var(--accent-color);
+    }
+    
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    </head>
+    <body>
+      <div id="particles-js"></div>
+      <div class="container">
+        <h1>Futuristic jQuery Playground</h1>
+        
+        <h2>Interactive Elements</h2>
+        <p>This is a paragraph that can be hidden or shown.</p>
+        <p>This is another paragraph with the same functionality.</p>
+        <button id="hide">Hide Paragraphs</button>
+        <button id="show">Show Paragraphs</button>
+        
+        <h2>Fade Effects</h2>
+        <button id="fadeInButton">Fade In Box</button>
+        <div id="fadeDiv"></div>
+        
+        <h2>Slide Effects</h2>
+        <div id="flip"><a id="slideButton" href="#">Click to slide down panel</a></div>
+        <div id="panel">Some futuristic text here for the panel</div>
+        
+        <h2>Form Interaction</h2>
+        <form id="myForm">
+          <input type="text" id="name" name="name" placeholder="Enter your name">
+          <input type="email" id="email" name="email" placeholder="Enter your email">
+          <input type="password" id="password" name="password" placeholder="Enter your password">
+          <button type="button" id="submitButton">Submit</button>
+        </form>
+        <div id="displayArea"></div>
+        
+        <h2>Additional Interactions</h2>
+        <div id="fk">
+          <p>Hover over the link below for a surprise!</p>
+          <a href="https://www.example.com/" target="_blank">Hover Me</a>
+        </div>
+        <button id="toggleButton">Toggle Content</button>
+      </div>
+    
+      <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          // Particles.js
+          particlesJS('particles-js', {
+            particles: {
+              number: { value: 80, density: { enable: true, value_area: 800 } },
+              color: { value: "#ffffff" },
+              shape: { type: "circle", stroke: { width: 0, color: "#000000" }, polygon: { nb_sides: 5 } },
+              opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+              size: { value: 3, random: true, anim: { enable: true, speed: 40, size_min: 0.1, sync: false } },
+              line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+              move: { enable: true, speed: 6, direction: "none", random: true, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+            },
+            interactivity: {
+              detect_on: "canvas",
+              events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+              modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+            },
+            retina_detect: true
+          });
+    
+          // Hide and Show
+          $("#hide").click(function() {
+            $("p").hide(300);
+          });
+          $("#show").click(function() {
+            $("p").show(300);
+          });
+          
+          // Fade In
+          $("#fadeInButton").click(function() {
+            $("#fadeDiv").fadeIn(1000);
+          });
+    
+          // Slide Down
+          $("#slideButton").click(function() {
+            $("#panel").slideToggle("slow");
+          });
+    
+          // Get Form Values
+          $("#submitButton").click(function() {
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var password = $("#password").val();
+            $("#displayArea").html(
+              "<p>Name: " + name + "</p>" +
+              "<p>Email: " + email + "</p>" +
+              "<p>Password: " + password + "</p>"
+            ).hide().fadeIn(1000);
+          });
+    
+          // Toggle Content
+          $("#toggleButton").click(function() {
+            $("#fk").fadeToggle(500);
+          });
+    
+          // Hover effect
+          $("a").mouseenter(function() {
+            gsap.to(this, {scale: 1.2, duration: 0.3, ease: "power2.out"});
+          }).mouseleave(function() {
+            gsap.to(this, {scale: 1, duration: 0.3, ease: "power2.out"});
+          });
+    
+          // Input focus effects
+          $(":input").focus(function() {
+            gsap.to(this, {backgroundColor: "rgba(0, 255, 255, 0.2)", duration: 0.3});
+          }).blur(function() {
+            gsap.to(this, {backgroundColor: "rgba(255, 255, 255, 0.1)", duration: 0.3});
+          });
+        });
+      </script>
+    </body>
+    </html>

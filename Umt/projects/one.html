@@ -1,0 +1,151 @@
+<html><head><base href="https://rajeel.web.app/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Interactive Futuristic Button</title><style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    
+    :root {
+      --primary-color: #00ffff;
+      --secondary-color: #ff00ff;
+      --background-color: #0a0a0a;
+      --text-color: #ffffff;
+      --accent-color: #ffcc00;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    #btn {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      padding: 20px 40px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: var(--background-color);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    
+    #btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      transform: scale(0);
+      transition: transform 0.5s ease-out;
+    }
+    
+    #btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.7);
+    }
+    
+    #btn:hover::before {
+      transform: scale(1);
+    }
+    
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    
+    </style>
+    </head>
+    <body>
+      <div id="particles-js"></div>
+      <button id="btn">Click me to change color</button>
+    
+      <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+      <script>
+        const btn = document.getElementById('btn');
+        const body = document.body;
+        const colors = ['#00ffff', '#ff00ff', '#ffcc00', '#ff6600', '#00ff00', '#ff0000'];
+        let currentColorIndex = 0;
+    
+        btn.addEventListener('click', () => {
+          currentColorIndex = (currentColorIndex + 1) % colors.length;
+          const newColor = colors[currentColorIndex];
+          
+          gsap.to(body, {
+            backgroundColor: newColor,
+            duration: 0.5,
+            ease: 'power2.out'
+          });
+    
+          gsap.to(btn, {
+            backgroundColor: newColor,
+            scale: 1.1,
+            duration: 0.2,
+            yoyo: true,
+            repeat: 1,
+            ease: 'power2.out'
+          });
+    
+          updateParticlesColor(newColor);
+        });
+    
+        btn.addEventListener('mouseenter', () => {
+          gsap.to(btn, {
+            scale: 1.1,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+    
+        btn.addEventListener('mouseleave', () => {
+          gsap.to(btn, {
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+    
+        function updateParticlesColor(color) {
+          particlesJS('particles-js', {
+            particles: {
+              number: { value: 80, density: { enable: true, value_area: 800 } },
+              color: { value: color },
+              shape: { type: "circle", stroke: { width: 0, color: "#000000" }, polygon: { nb_sides: 5 } },
+              opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+              size: { value: 3, random: true, anim: { enable: true, speed: 40, size_min: 0.1, sync: false } },
+              line_linked: { enable: true, distance: 150, color: color, opacity: 0.4, width: 1 },
+              move: { enable: true, speed: 6, direction: "none", random: true, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+            },
+            interactivity: {
+              detect_on: "canvas",
+              events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+              modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+            },
+            retina_detect: true
+          });
+        }
+    
+        // Initial particles setup
+        updateParticlesColor(colors[0]);
+    
+      </script>
+    </body>
+    </html>

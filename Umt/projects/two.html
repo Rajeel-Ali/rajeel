@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <form > 
+<div>
+    <label for="name">Name</label>
+<input type="text" name="name" id="name" value="">
+</div>
+<div>
+    <label for="email">Email</label>
+<input type="email" name="email" id="email"  value="">
+</div>
+<div>
+    <label for="password">Password</label>
+<input type="password" name="password" id="password"  value="">
+</div>
+<div>
+
+<label for="radio">Gender</label>
+<input type="radio" name="gender" id="male" value="male">
+<label for="male">Male</label>
+<input type="radio" name="gender" id="female" value="female">
+<label for="female">Female</label><br>
+</div>
+
+<div>
+<br><br>
+
+<select name="city" id="city">
+  <option value="delhi">Delhi</option>
+  <option value="mumbai">Mumbai</option>
+  <option value="chennai">Chennai</option>
+  <option value="kolkata">Kolkata</option>
+</select>
+<br>
+<br>
+
+</div>
+
+<div>
+
+<label for="checkbox">Hobbies</label>
+<input type="checkbox" name="hobbies" id="cricket" value="cricket">
+<label for="cricket">Cricket</label>
+<input type="checkbox" name="hobbies" id="football" value="football">
+<label for="football">Football</label>
+<input type="checkbox" name="hobbies" id="tennis" value="tennis">
+<label for="tennis">Tennis</label>
+</div>
+<div>
+<label for="button">button</label>
+<input type="button" onclick="formsubmit()" name="button" value="Submit">
+</div>
+
+    </form>
+<div id="setvalue">
+
+</div>
+
+
+
+<script>
+
+
+function formsubmit() {
+  var a = document.getElementById("name").value;
+  var b = document.getElementById("email").value;
+  var c = document.getElementById("password").value;
+  var d = document.getElementById("male").checked;
+  var e = document.getElementById("female").checked;
+  var f = document.getElementById("city").value;
+  var g = document.getElementById("cricket").checked;
+  var h = document.getElementById("football").checked;
+  var i = document.getElementById("tennis").checked;
+  var setvalue = a + b + c + d + e + f + g + h + i;
+document.getElementById("setvalue").innerHTML = "Name: " + a + "<br>Email: " + b + "<br>Password: " + c + 
+"<br>Gender: " + d + " " + e + "<br>City: " + f + "<br>Hobbies: " + g + "  " + h + "  "+ i +" <br> ";
+}
+
+</script>
+
+</body>
+</html>

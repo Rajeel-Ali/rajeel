@@ -1,0 +1,321 @@
+<html><head><base href="https://rajeel.web.app/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Futuristic Sort Operation</title><style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+  
+  :root {
+    --primary-color: #00ffff;
+    --secondary-color: #ff00ff;
+    --background-color: #0a0a0a;
+    --text-color: #ffffff;
+    --accent-color: #ffcc00;
+    --item-bg: rgba(255, 255, 255, 0.1);
+    --item-hover: rgba(255, 255, 255, 0.2);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .sort-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+  }
+  
+  h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  
+  .sort-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .sort-button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--background-color);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .sort-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+  }
+  
+  .sort-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease-out;
+  }
+  
+  .sort-button:hover::before {
+    transform: scale(1);
+  }
+  
+  .sort-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .sort-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: var(--item-bg);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .sort-list-item:hover {
+    background-color: var(--item-hover);
+    transform: translateX(5px);
+  }
+  
+  .sort-list-item-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+  }
+  
+  .sort-list-item-arrow {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  /* Toggle Switch Styling */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 20px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--item-bg);
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--text-color);
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+    background-color: var(--background-color);
+  }
+  
+  .dark-mode {
+    --background-color: #ffffff;
+    --text-color: #0a0a0a;
+    --item-bg: rgba(0, 0, 0, 0.1);
+    --item-hover: rgba(0, 0, 0, 0.2);
+  }
+  
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+  
+    <div class="container">
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+  
+      <div class="sort-container">
+        <h1>Futuristic Sort Operation</h1>
+        <ul class="sort-list">
+          <li class="sort-list-item">
+            <span class="sort-list-item-value">10</span>
+            <span class="sort-list-item-arrow">↑</span>
+          </li>
+          <li class="sort-list-item">
+            <span class="sort-list-item-value">5</span>
+            <span class="sort-list-item-arrow">↑</span>
+          </li>
+          <li class="sort-list-item">
+            <span class="sort-list-item-value">15</span>
+            <span class="sort-list-item-arrow">↑</span>
+          </li>
+          <li class="sort-list-item">
+            <span class="sort-list-item-value">2</span>
+            <span class="sort-list-item-arrow">↑</span>
+          </li>
+          <li class="sort-list-item">
+            <span class="sort-list-item-value">20</span>
+            <span class="sort-list-item-arrow">↑</span>
+          </li>
+        </ul>
+        <div class="sort-buttons">
+          <button class="sort-button" id="sort-ascending">Sort Ascending</button>
+          <button class="sort-button" id="sort-descending">Sort Descending</button>
+        </div>
+      </div>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+      const sortAscendingButton = document.getElementById('sort-ascending');
+      const sortDescendingButton = document.getElementById('sort-descending');
+      const sortList = document.querySelector('.sort-list');
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const bodyElement = document.body;
+  
+      function sortAndDisplay(ascending) {
+        const listItems = sortList.querySelectorAll('.sort-list-item');
+        const values = Array.from(listItems).map(item => ({
+          value: parseInt(item.querySelector('.sort-list-item-value').textContent),
+          element: item
+        }));
+  
+        values.sort((a, b) => ascending ? a.value - b.value : b.value - a.value);
+  
+        gsap.to(listItems, {
+          opacity: 0,
+          y: 20,
+          stagger: 0.1,
+          ease: "power2.out",
+          onComplete: () => {
+            sortList.innerHTML = '';
+            values.forEach((item, index) => {
+              sortList.appendChild(item.element);
+              gsap.fromTo(item.element, 
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, delay: index * 0.1, ease: "power2.out" }
+              );
+            });
+  
+            const arrowElements = sortList.querySelectorAll('.sort-list-item-arrow');
+            arrowElements.forEach(arrow => {
+              gsap.to(arrow, {
+                rotation: ascending ? 0 : 180,
+                duration: 0.5,
+                ease: "back.out(1.7)"
+              });
+            });
+          }
+        });
+      }
+  
+      sortAscendingButton.addEventListener('click', () => sortAndDisplay(true));
+      sortDescendingButton.addEventListener('click', () => sortAndDisplay(false));
+  
+      darkModeToggle.addEventListener('change', () => {
+        bodyElement.classList.toggle('dark-mode');
+        updateParticlesColor(bodyElement.classList.contains('dark-mode'));
+      });
+  
+      function updateParticlesColor(isDarkMode) {
+        const color = isDarkMode ? "#000000" : "#ffffff";
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: color },
+            shape: { type: "circle", stroke: { width: 0, color: "#000000" }, polygon: { nb_sides: 5 } },
+            opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+            size: { value: 3, random: true, anim: { enable: true, speed: 40, size_min: 0.1, sync: false } },
+            line_linked: { enable: true, distance: 150, color: color, opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 6, direction: "none", random: true, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+            modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+          },
+          retina_detect: true
+        });
+      }
+  
+      // Initial particles setup
+      updateParticlesColor(false);
+  
+    </script>
+  </body>
+  </html>

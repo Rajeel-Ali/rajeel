@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="trivia.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+        document.addEventListener('DOMContentLoaded', function() {
+
+            document.querySelector('#abtn').addEventListener('click', function() {
+            this.style.backgroundColor = "red";
+            document.querySelector('p').innerHTML = "Incorrect";
+            });
+            document.querySelector('#bbtn').addEventListener('click', function() {
+              this.style.backgroundColor = "red";
+              document.querySelector('p').innerHTML = "Incorrect";
+            });
+            document.querySelector('#mbtn').addEventListener('click', function() {
+              this.style.backgroundColor = "green";
+              document.querySelector('p').innerHTML = "Correct!";
+            });    
+          
+
+
+
+
+
+            document.querySelector('#btn').addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                let input = document.querySelector('#txt');
+                if (input.value === "green"){
+                input.style.backgroundColor = "green";
+                document.querySelector('#feedback').innerHTML = "Correct!";
+                } else {
+                document.querySelector('#txt').style.backgroundColor = "red";
+                document.querySelector('#feedback').innerHTML = "Incorrect!";
+                }
+            });    
+        });
+
+    </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+
+                <h3> which fruit do I like the most?</h3>
+
+                <p id = "wr"></p>
+
+                <button id="abtn">apple</button>
+                <button id="mbtn">mango</button>
+                <button id="bbtn">banana</button>
+
+
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>What is my favorite color?</h3>
+            <form>
+                <input type="text" id="txt" callback=false></input>
+                <button type="submit" id="btn">Check answer</button>
+                <p id="feedback"></p>
+            </form>    
+
+
+            </div>
+        </div>
+    </body>
+</html>

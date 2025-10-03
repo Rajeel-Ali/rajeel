@@ -1,0 +1,234 @@
+<html><head><base href="#"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Rajeel Ali - Projects</title><style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
+  
+  :root {
+    --primary-color: #00ffff;
+    --secondary-color: #ff00ff;
+    --background-color: #0a0a0a;
+    --text-color: #ffffff;
+    --accent-color: #ffcc00;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Raleway', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  header {
+    text-align: center;
+    padding: 100px 0 50px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.7);
+    z-index: 1;
+  }
+  
+  header h1, header p {
+    position: relative;
+    z-index: 2;
+  }
+  
+  header h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .section {
+    padding: 100px 0;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 60px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  }
+  
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+  
+  .project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+  }
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease-out;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+  }
+  
+  .project-card:hover::before {
+    transform: scale(1);
+  }
+  
+  .project-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 3rem;
+    }
+  
+    .section-title {
+      font-size: 2.5rem;
+    }
+  }
+  
+  </style>
+  </head>
+  <body>
+    <header>
+      <h1>Projects</h1>
+      <p>These are some simple projects I made while practicing and learning web development</p>
+    </header>
+  
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+          <!-- Project cards will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+  
+    <script>
+      const projects = [
+        { name: "Calculator", link: "calc.html" }, 
+        { name: " jQuery ", link: "jq.html" },
+        { name: "Form with jQuery", link: "assignments/form.html" },
+        { name: "To-DO list with jQuery", link: "jqtest.html" },
+        { name: "Find and replace", link: "new.html" },
+        { name: "Change bg color", link: "one.html" },
+        { name: " Sorting project ", link: "sort.html" },
+        { name: "Trivia", link: "trivia.html" },
+        { name: "Form", link: "two.html" },
+      ];
+    
+      const projectGrid = document.querySelector('.project-grid');
+    
+      projects.forEach(project => {
+        const card = document.createElement('div');
+        card.classList.add('project-card');
+    
+        card.innerHTML = `<h3>${project.name}</h3>`;
+  
+        card.addEventListener('click', () => {
+          window.location.href = project.link;
+        });
+  
+        projectGrid.appendChild(card);
+      });
+  
+      // GSAP animations
+      gsap.registerPlugin(ScrollTrigger);
+  
+      // Header animation
+      gsap.from('header h1, header p', {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.3,
+        ease: 'power3.out'
+      });
+  
+      // Project cards animation
+      gsap.utils.toArray('.project-card').forEach(card => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 80%'
+          }
+        });
+      });
+  
+      // Animated underline for section title
+      gsap.from('.section-title::after', {
+        scaleX: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.section-title',
+          start: 'top 80%'
+        }
+      });
+  
+    </script>
+  </body>
+  </html>

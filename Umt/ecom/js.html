@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript DOM Manipulation</title>
+</head>
+<body>
+  <h1>Exploring JavaScript DOM Manipulation</h1>
+
+  <p id="exampleParagraph">This text will be changed!</p>
+
+  <button id="changeTextButton">Change Text</button>
+
+  <div id="exampleDiv" style="width: 20%; padding: 2%;">This div will change color!</div>
+
+  <button id="changeColorButton">Change Color</button>
+
+ <div>
+  <img id="myImage" src="images/1.png" alt="Image" style="width: 40%; padding: auto;">
+ </div>
+  <button id="changeImageButton">Change Image</button>
+
+
+  <script>
+    // Get references to the buttons and elements
+    const changeTextButton = document.getElementById("changeTextButton");
+    const exampleParagraph = document.getElementById("exampleParagraph");
+    const changeColorButton = document.getElementById("changeColorButton");
+    const exampleDiv = document.getElementById("exampleDiv");
+    const changeImageButton = document.getElementById("changeImageButton");
+    const myImage = document.getElementById("myImage");
+
+    // Change paragraph text on button click
+    changeTextButton.addEventListener("click", () => {
+      exampleParagraph.textContent = "Hello, World!";
+    });
+
+    // Change div background color on button click
+    changeColorButton.addEventListener("click", () => {
+      exampleDiv.style.backgroundColor = "blue";
+    });
+
+    // Change image source on button click
+    changeImageButton.addEventListener("click", () => {
+      myImage.src = "images/2.png"; 
+    });
+  </script>
+</body>
+</html>
