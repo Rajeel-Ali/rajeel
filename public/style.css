@@ -174,6 +174,11 @@ nav {
   transform: scale(1);
 }
 
+.cta-button.small {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
 .scroll-indicator {
   position: absolute;
   bottom: 30px;
@@ -298,6 +303,10 @@ nav {
   transform: scale(1);
 }
 
+a.project-card {
+  text-decoration: none;
+}
+
 .skill-icon,
 .project-icon {
   font-size: 64px;
@@ -318,6 +327,11 @@ nav {
 .skill-description,
 .project-description {
   font-size: 1rem;
+}
+
+.project-card .project-title,
+.project-card .project-description {
+  color: var(--text-color);
 }
 
 .project-image {
@@ -488,7 +502,7 @@ New: CONTACT GRID & CARDS (Improved Contact Section)
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.download-cv-btn:hover {
+.download-cv-.btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
 }
@@ -573,6 +587,42 @@ footer {
 }
 @media (min-width: 1024px) {
   /* Additional grid or layout adjustments can go here if needed */
+}
+
+/*--------------------------------------------------------------
+16. SEARCH BAR
+--------------------------------------------------------------*/
+.search-container {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 15px 20px 15px 50px; /* Add padding for the icon */
+  border-radius: 50px;
+  border: 2px solid var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+#search-bar:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.search-container::before {
+  content: "\f002"; /* Font Awesome search icon */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  font-size: 20px;
 }
 
 /*--------------------------------------------------------------
