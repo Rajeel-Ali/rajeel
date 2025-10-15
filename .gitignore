@@ -1,5 +1,5 @@
 # Ignore Firebase files
-/firebase
+/.firebase
 /firebase.json
 
 # Ignore IDE and editor settings
