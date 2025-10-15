@@ -1,8 +1,18 @@
-/.firebase
+# Ignore Firebase files
+/firebase
+/firebase.json
+
+# Ignore IDE and editor settings
 /.idx
 /.vscode
+
+# Ignore local database files
 /a.sql
-/firebase.json
-/index.html
+
+# Ignore project build and dependency files
 /package-lock.json
 /package.json
+
+# Ignore main HTML (internal)
+/index.html
+

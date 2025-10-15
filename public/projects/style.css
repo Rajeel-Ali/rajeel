@@ -1,47 +1,78 @@
 
-button{
-    background-color: aqua;
-    padding: 5%; 
-    text-align: center;
-}
- body {
+body {
     font-family: sans-serif;
-    background-color: #111;
-    color: #fff;
-  }
-  
-  header {
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+}
+
+.hero {
+    position: relative;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 4em;
-    color: #00ffff;
-  }
-  
-  p {
-    font-size: 1.2em;
-  }
-  
-  #projects {
-    margin: 20px auto;
-    width: 80%;
-  }
-  
-  .project-grid {
+    background-color: #1a1a1a;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    color: #fff;
+}
+
+.hero-content p {
+    color: #aaa;
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-  }
-  
-  .project-card {
-    /* Style for individual project cards */
-    background-color: #222;
-    padding: 10px;
+}
+
+.project-card {
+    background: #222;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    text-align: center;
     cursor: pointer;
-  }
-  
-  /* Add hover effects and animations for a futuristic look */
-  
+    transition: transform 0.3s ease;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}

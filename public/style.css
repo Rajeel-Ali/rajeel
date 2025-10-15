@@ -502,7 +502,7 @@ New: CONTACT GRID & CARDS (Improved Contact Section)
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.download-cv-.btn:hover {
+.download-cv-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
 }
@@ -554,6 +554,19 @@ footer {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 50px 0;
   text-align: center;
+}
+
+.social-links a {
+  display: inline-block;
+  margin: 0 15px;
+  font-size: 34px;
+  color: white;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: white;
+  transform: translateY(-5px);
 }
 
 /*--------------------------------------------------------------
@@ -614,9 +627,7 @@ footer {
 }
 
 .search-container::before {
-  content: "\f002"; /* Font Awesome search icon */
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%2300ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
   position: absolute;
   top: 50%;
   left: 20px;
@@ -637,7 +648,4 @@ New: VERIFY LINK (for Certifications page)
 .verify-link:hover {
   color: var(--secondary-color);
   text-decoration: underline;
-}
-#particles-js {
-  z-index: 0;
 }

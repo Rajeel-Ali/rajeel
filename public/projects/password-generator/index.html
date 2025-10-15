@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <div class="password-display-container">
+            <input type="text" id="password-display" readonly>
+            <button id="copy-button">Copy</button>
+        </div>
+        <div class="controls">
+            <div class="control">
+                <label for="length">Password Length</label>
+                <input type="range" id="length" min="8" max="32" value="16">
+                <span id="length-value">16</span>
+            </div>
+            <div class="control">
+                <label for="uppercase">Include Uppercase</label>
+                <input type="checkbox" id="uppercase" checked>
+            </div>
+            <div class="control">
+                <label for="lowercase">Include Lowercase</label>
+                <input type="checkbox" id="lowercase" checked>
+            </div>
+            <div class="control">
+                <label for="numbers">Include Numbers</label>
+                <input type="checkbox" id="numbers" checked>
+            </div>
+            <div class="control">
+                <label for="symbols">Include Symbols</label>
+                <input type="checkbox" id="symbols" checked>
+            </div>
+        </div>
+        <div class="strength-container">
+            <div id="strength-indicator"></div>
+        </div>
+        <button id="generate-button">Generate Password</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

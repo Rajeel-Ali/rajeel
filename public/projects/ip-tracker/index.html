@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic IP Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <h1>IP Address Tracker</h1>
+        <div class="input-container">
+            <input type="text" id="ip-input" placeholder="Enter IP Address...">
+            <button id="track-button">Track</button>
+        </div>
+        <div id="map"></div>
+        <div class="info-container">
+            <div class="info-box">
+                <h2>IP Address</h2>
+                <p id="ip-address">-</p>
+            </div>
+            <div class="info-box">
+                <h2>Location</h2>
+                <p id="location">-</p>
+            </div>
+            <div class="info-box">
+                <h2>ISP</h2>
+                <p id="isp">-</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
